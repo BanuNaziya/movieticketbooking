@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.eclipse.jgit.gpg.bc">
+    <module_version install_time="1724748258940" last="true" origin="installer" specification_version="6.9.0.202403050737-r">
+        <file crc="2433942437" name="config/Modules/org-eclipse-jgit-gpg-bc.xml"/>
+        <file crc="712219845" name="modules/org-eclipse-jgit-gpg-bc.jar"/>
+    </module_version>
+</module>

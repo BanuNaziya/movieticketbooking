@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.lib.chrome_devtools_protocol/1">
+    <module_version install_time="1724748292102" last="true" origin="installer" specification_version="1.0">
+        <file crc="1535162972" name="config/Modules/org-netbeans-lib-chrome_devtools_protocol.xml"/>
+        <file crc="1870332651" name="modules/org-netbeans-lib-chrome_devtools_protocol.jar"/>
+    </module_version>
+</module>

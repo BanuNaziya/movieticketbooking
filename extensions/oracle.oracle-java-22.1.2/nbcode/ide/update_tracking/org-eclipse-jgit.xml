@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.eclipse.jgit">
+    <module_version install_time="1724748238819" last="true" origin="installer" specification_version="6.9.0.202403050737-r">
+        <file crc="2014703679" name="config/Modules/org-eclipse-jgit.xml"/>
+        <file crc="2749331106" name="modules/org-eclipse-jgit.jar"/>
+    </module_version>
+</module>

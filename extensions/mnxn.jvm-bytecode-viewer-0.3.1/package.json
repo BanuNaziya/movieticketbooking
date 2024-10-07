@@ -1,0 +1,254 @@
+{
+	"name": "jvm-bytecode-viewer",
+	"displayName": "JVM Bytecode Viewer",
+	"description": "Show the JVM Bytecode for a .class file",
+	"icon": "images/icon.png",
+	"version": "0.3.1",
+	"publisher": "mnxn",
+	"license": "MIT",
+	"categories": [
+		"Programming Languages",
+		"Other"
+	],
+	"keywords": [
+		"java bytecode",
+		"jvm bytecode",
+		"bytecode",
+		"jvm",
+		"javap"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mnxn/vscode-jvm-bytecode-viewer"
+	},
+	"homepage": "https://github.com/mnxn/vscode-jvm-bytecode-viewer/blob/master/README.md",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"activationEvents": [
+		"onCommand:jvm-bytecode-viewer.show-bytecode",
+		"onCommand:jvm-bytecode-viewer.show-bytecode-verbose",
+		"onCommand:jvm-bytecode-viewer.explore-jar-file"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "JVM Bytecode Viewer",
+			"properties": {
+				"jvm-bytecode-viewer.defaultToVerboseOutput": {
+					"type": "boolean",
+					"default": false,
+					"description": "Whether the title bar button shows the verbose output by default"
+				},
+				"jvm-bytecode-viewer.editorTitleBar": {
+					"type": "boolean",
+					"default": true,
+					"description": "Whether to show commands in the editor title bar menu"
+				},
+				"jvm-bytecode-viewer.editorTitleBarContextMenu": {
+					"type": "boolean",
+					"default": true,
+					"description": "Whether to show commands in the editor title bar context menu"
+				},
+				"jvm-bytecode-viewer.explorerContextMenu": {
+					"type": "boolean",
+					"default": true,
+					"description": "Whether to show commands in the explorer context menu"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "jvm-bytecode-viewer.show-bytecode",
+				"title": "Show Bytecode",
+				"category": "JVM Bytecode Viewer"
+			},
+			{
+				"command": "jvm-bytecode-viewer.show-bytecode-verbose",
+				"title": "Show Bytecode (Verbose)",
+				"category": "JVM Bytecode Viewer"
+			},
+			{
+				"command": "jvm-bytecode-viewer.explore-jar-file",
+				"title": "Explore Jar File",
+				"category": "JVM Bytecode Viewer"
+			},
+			{
+				"command": "jvm-bytecode-viewer.close-jar-file",
+				"title": "Close Jar File",
+				"category": "JVM Bytecode Viewer"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode",
+					"when": "resourceExtname == .class || resourceExtname == .verbose"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode-verbose",
+					"when": "resourceExtname == .class || resourceExtname == .bytecode"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode",
+					"alt": "jvm-bytecode-viewer.show-bytecode-verbose",
+					"when": "resourceExtname == .class && !config.jvm-bytecode-viewer.defaultToVerboseOutput && config.jvm-bytecode-viewer.editorTitleBar",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode-verbose",
+					"alt": "jvm-bytecode-viewer.show-bytecode",
+					"when": "resourceExtname == .class && config.jvm-bytecode-viewer.defaultToVerboseOutput && config.jvm-bytecode-viewer.editorTitleBar",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode",
+					"when": "resourceExtname == .verbose && config.jvm-bytecode-viewer.editorTitleBar",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode-verbose",
+					"when": "resourceExtname == .bytecode && config.jvm-bytecode-viewer.editorTitleBar",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.explore-jar-file",
+					"when": "resourceExtname == .jar && config.jvm-bytecode-viewer.editorTitleBar",
+					"group": "navigation"
+				}
+			],
+			"editor/title/context": [
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode",
+					"when": "resourceExtname == .class && config.jvm-bytecode-viewer.editorTitleBarContextMenu",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode-verbose",
+					"when": "resourceExtname == .class && config.jvm-bytecode-viewer.editorTitleBarContextMenu",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode",
+					"when": "resourceExtname == .verbose && config.jvm-bytecode-viewer.editorTitleBarContextMenu",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode-verbose",
+					"when": "resourceExtname == .bytecode && config.jvm-bytecode-viewer.editorTitleBarContextMenu",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.explore-jar-file",
+					"when": "resourceExtname == .jar && config.jvm-bytecode-viewer.editorTitleBarContextMenu",
+					"group": "navigation"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode",
+					"when": "resourceExtname == .class && !explorerResourceIsFolder && config.jvm-bytecode-viewer.explorerContextMenu",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode-verbose",
+					"when": "resourceExtname == .class && !explorerResourceIsFolder && config.jvm-bytecode-viewer.explorerContextMenu",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.explore-jar-file",
+					"when": "resourceExtname == .jar",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode",
+					"when": "viewItem == class",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.show-bytecode-verbose",
+					"when": "viewItem == class",
+					"group": "navigation"
+				},
+				{
+					"command": "jvm-bytecode-viewer.close-jar-file",
+					"when": "viewItem == jar",
+					"group": "navigation"
+				}
+			]
+		},
+		"views": {
+			"explorer": [
+				{
+					"id": "jarExplorer",
+					"name": "Jar Explorer"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "jvm-bytecode",
+				"aliases": [
+					"JVM Bytecode"
+				],
+				"extensions": [
+					".bytecode"
+				],
+				"configuration": "./configurations/jvm-bytecode.json"
+			},
+			{
+				"id": "jvm-bytecode-verbose",
+				"aliases": [
+					"JVM Bytecode (Verbose)"
+				],
+				"extensions": [
+					".bytecode.verbose"
+				],
+				"configuration": "./configurations/jvm-bytecode.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "jvm-bytecode",
+				"scopeName": "source.jvm-bytecode",
+				"path": "./syntaxes/jvm-bytecode.json"
+			},
+			{
+				"language": "jvm-bytecode-verbose",
+				"scopeName": "source.jvm-bytecode-verbose",
+				"path": "./syntaxes/jvm-bytecode-verbose.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/adm-zip": "^0.4.33",
+		"@types/vscode": "^1.52.0",
+		"@types/node": "^14.14.21",
+		"typescript": "^4.1.3"
+	},
+	"dependencies": {
+		"adm-zip": "^0.5.1"
+	},
+	"__metadata": {
+		"id": "df104e71-f336-457f-a3a2-8a028a536055",
+		"publisherId": "9cd84a28-b753-4c1d-8e39-6044be3db3f7",
+		"publisherDisplayName": "Max L",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1728234079587,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
+}
