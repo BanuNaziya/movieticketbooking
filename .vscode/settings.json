@@ -1,0 +1,23 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "MySQL80",
+            "database": "movieticketbook",
+            "username": "root",
+            "password": "Nazi@123",
+            "connectionTimeout": 30
+        }
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\barshiya\\Desktop\\mysql-connector-j-9.0.0.jar"
+    ]
+}

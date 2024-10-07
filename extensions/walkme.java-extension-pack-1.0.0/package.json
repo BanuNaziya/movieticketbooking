@@ -1,0 +1,38 @@
+{
+	"name": "Java-extension-pack",
+	"displayName": "Java extension pack",
+	"description": "The most common extensions for Java in one pack.\nThis extension pack includes: \n\nMaven for Java\nLanguage Support for Java(TM) by Red Hat\nDebugger for Java\nJava Test Runner\nJava Extension Pack\nJava Dependency Viewer\nJava Language Support\nSpring Initializr Java Support",
+	"publisher": "walkme",
+	"version": "1.0.0",
+	"categories": [
+		"Extension Packs"
+	],
+	"extensionPack": [
+		"vscjava.vscode-maven",
+		"redhat.java",
+		"vscjava.vscode-java-debug",
+		"vscjava.vscode-java-test",
+		"vscjava.vscode-java-pack",
+		"vscjava.vscode-java-dependency",
+		"georgewfraser.vscode-javac",
+		"vscjava.vscode-spring-initializr"
+	],
+	"homepage": "https://walkmeshortcuts.com/",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"repository": "https://walkmeshortcuts.com/",
+	"__metadata": {
+		"id": "e93b7ce6-c590-4fa6-b395-b9b4641dbab4",
+		"publisherId": "05390d02-4558-43b9-ae89-bc092b2d2ffb",
+		"publisherDisplayName": "walkme",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1728234638303,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
+}
