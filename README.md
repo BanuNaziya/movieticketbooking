@@ -16,7 +16,7 @@ The Movie Ticket Booking System is an online application developed using Java an
 ### Prerequisites
 - Java Development Kit (JDK) 11 or higher
 - MySQL
-- 
+
 ## Contributing
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
