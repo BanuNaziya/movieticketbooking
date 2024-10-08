@@ -1,0 +1,75 @@
+## CREATING DATABASE TABLES 
+
+USE Movieticketbook;
+CREATE TABLE Users(
+UserID INT AUTO_INCREMENT,
+Username VARCHAR(255),
+Password VARCHAR(255),
+Name VARCHAR(255),
+Phone VARCHAR(15),
+Address VARCHAR(255),
+PRIMARY KEY(UserID)
+);
+CREATE TABLE Admin(
+AdminID INT AUTO_INCREMENT,
+Username VARCHAR(255) NOT NULL,
+Password VARCHAR(255) NOT NULL,
+PRIMARY KEY(AdminID)
+);
+CREATE TABLE Theaters(
+TheaterID INT AUTO_INCREMENT,
+Location VARCHAR(255) NOT NULL,
+SeatingCapcity INt,
+PRIMARY KEY(TheaterID)
+);
+CREATE TABLE Movies(
+MovieID INT AUTO_INCREMENT,
+Title VARCHAR(255) NOT NULL,
+Genre VARCHAR(255),
+Rating Decimal(3,2),
+Duration INT,
+Synopsis TEXT,
+PRIMARY KEY(MovieID)
+);
+CREATE TABLE Showtimes(
+ShowtimeID INT AUTO_INCREMENT,
+MovieID INT,
+TheaterID INT,
+Showtime DATETIME,
+PRIMARY KEY(ShowtimeID),
+FOREIGN KEY(MovieID)REFERENCES Movies(MovieID),
+FOREIGN KEY(TheaterID)REFERENCES Theaters(TheaterID)
+);
+
+
+## INSERTING VALUES TO THE TABLES
+ 
+INSERT INTO users(Username, Password, Name, Phone, Address)
+VALUES 
+('naziya', 'password123', 'nazi', '9876543254', '123 main road'),
+('arshiya', 'password456', 'arshi', '9876547254', '123 main road'),
+('farha', 'password789', 'farha', '9876543274', '123 main road');
+
+INSERT INTO admin (Username, Password)
+VALUES 
+('admin1', 'adminpass1'),
+('admin2', 'adminpass2');
+
+
+INSERT INTO theaters (Location, SeatingCapcity)
+VALUES 
+('pvr inox', '200'),
+('city center cinema', '180'),
+('gopalan cinemas', '230');
+
+INSERT INTO movies (Title, Genre, Rating, Duration, Synopsis)
+VALUES 
+('Goat', 'adventure', 9, 180, 'the shadow of unknown past.'),
+('Titanic', 'Romantic', 8.5, 195, 'A love storyset on titanic ship.'),
+('Inception', 'Sci-fi', 8.9, 145, 'A thriller about dream invasion.');
+
+INSERT INTO showtimes (MovieID, TheaterID, Showtime)
+VALUES 
+(1, 1, '2024-10-12 15:00:00'),
+(2, 2, '2024-10-13 18:00:00'),
+(3, 3, '2024-10-13 21:30:00');
